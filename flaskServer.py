@@ -1,13 +1,35 @@
 from flask import Flask, render_template, request, redirect, url_for
+import json
 
 app = Flask(__name__)
 
+chartJson = {1: {"type": "bar", "data": [
+			{"Name": "A", "Value": 5},
+			{"Name": "B", "Value": 16},
+			{"Name": "C", "Value": 18},
+			{"Name": "D", "Value": 14},
+			{"Name": "E", "Value": 11}
+			]},
+			 2: {"type": "col", "data": [
+			 {"Name": "A", "Value": 32},
+			 {"Name": "B", "Value": 23},
+			 {"Name": "C", "Value": 15},
+			 {"Name": "D", "Value": 10},
+			 {"Name": "E", "Value": 12}
+			 ]},
+			 }
 
 @app.route('/')
 def index():
     """Renders index template."""
     
     return render_template('SurveyWebsite.html')
+
+@app.route('/chart/<int:chartNumber>')
+def chart(chartNumber):
+	"""Returns JSON data of chart number specified."""
+
+	return json.dumps(chartJson[chartNumber])
 
 
 @app.route('/results/', methods=['POST'])

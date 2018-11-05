@@ -2,6 +2,7 @@
 <html lang = "en">
 <head>
 	<meta charset="utf-8">
+	<script src="{{ url_for('static', filename='d3/d3.v4.js') }}" charset="utf-8"></script>
 	<title>Assignment 1</title>
 	<style type="text/css">
 
@@ -16,7 +17,77 @@
 <body>
 	<div id="wrapper">
 		<figure>
-			<img src="static/bar-chart.png">
+			<script type="text/javascript">
+			// Define margins
+
+			var svgWidth = 800;
+			var svgHeight = 500;
+				
+			var margin = {top: 20, right: 50, bottom: 30, left: 100};
+			var chartWidth = svgWidth - margin.left - margin.right;
+			var chartHeight = svgHeight - margin.top - margin.bottom;
+
+			chart3 = d3.select("figure")
+				.append("svg")
+				.attr("width", svgWidth)
+				.attr("height", svgHeight)
+				.append("g")
+					.attr("transform", "translate("+margin.left+", "+margin.top+")");
+
+			function generateColumnChart(){
+				
+				var xScale = d3.scaleLinear()
+			                     .domain([0, d3.max(dataset, function(d){ return +d.Value; }) ])
+			                     .range([0, chartWidth]);
+
+			    var yScale = d3.scaleBand()
+			          			.domain(dataset.map(function(d) { return d.Name; }))
+								.range([0, chartHeight])
+								.paddingInner(0.2)	
+				
+				// Create an x-axis connected to the x scale
+				var xAxis = d3.axisBottom()
+								.scale(xScale)
+								.ticks(7);
+
+				//Define Y axis
+				var yAxis = d3.axisLeft()
+								.scale(yScale)
+								.ticks();
+							  
+				// Call the x-axis
+				chart3.append("g")
+					.attr("class", "axis") // For styling.
+					.attr("transform", "translate(0," + chartHeight + ")")
+					.call(xAxis);
+					
+				// Call the y axis
+				chart3.append("g")
+					.attr("class", "axis")
+					.call(yAxis);
+							
+				// Add rectangles
+				chart3.selectAll("rect")
+				   .data(dataset)
+				   .enter()
+					   .append("rect")
+					   .attr("x", 0)
+					   .attr("y", function(d) { return yScale(d.Name); })
+					   .attr("width", function(d) { return xScale(+d.Value); })
+					   .attr("height", yScale.bandwidth() ) // returns width (in this case height) of each band.
+					   .attr("fill", "Green");
+			}
+
+			// Load the file data.csv and generate a visualisation based on it
+			d3.json("/chart/1", function(data) {
+				dataset = data["data"];
+
+				console.log(dataset);
+
+				generateColumnChart();
+			});
+
+			</script>
 		</figure>
 		<aside>
 			 <form action="{{ url_for('results') }}" method="post">
