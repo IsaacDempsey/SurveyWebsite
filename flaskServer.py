@@ -3,37 +3,47 @@ import json
 
 app = Flask(__name__)
 
+
 chartJson = {1: {"type": "bar", "data": [
-			{"Name": "A", "Value": 5},
-			{"Name": "B", "Value": 16},
-			{"Name": "C", "Value": 18},
-			{"Name": "D", "Value": 14},
-			{"Name": "E", "Value": 11}
-			]},
-			 2: {"type": "col", "data": [
-			 {"Name": "A", "Value": 32},
-			 {"Name": "B", "Value": 23},
-			 {"Name": "C", "Value": 15},
-			 {"Name": "D", "Value": 10},
-			 {"Name": "E", "Value": 12}
-			 ]},
-			 }
+            {"Name": "A", "Value": 5},
+            {"Name": "B", "Value": 16},
+            {"Name": "C", "Value": 18},
+            {"Name": "D", "Value": 14},
+            {"Name": "E", "Value": 11}
+            ]},
+            2: {"type": "col", "data": [
+            {"Name": "A", "Value": 32},
+            {"Name": "B", "Value": 23},
+            {"Name": "C", "Value": 15},
+            {"Name": "D", "Value": 10},
+            {"Name": "E", "Value": 12}
+            ]},
+            }
+
 
 @app.route('/')
 def index():
-    """Renders index template."""
-    
-    return render_template('SurveyWebsite.html')
+    """Renders index template."""  
+
+    return redirect('/chart/1')
+
 
 @app.route('/chart/<int:chartNumber>')
 def chart(chartNumber):
-	"""Returns JSON data of chart number specified."""
+    """Renders page containing chart of number specified.""" 
 
-	return json.dumps(chartJson[chartNumber])
+    return render_template('SurveyWebsite.html', chartNumber=chartNumber)
 
 
-@app.route('/results/', methods=['POST'])
-def results():
+@app.route('/data/<int:chartNumber>')
+def data(chartNumber):
+    """Returns JSON data of chart number specified."""
+
+    return json.dumps(chartJson[chartNumber])
+
+
+@app.route('/results/<int:chartNumber>', methods=['POST'])
+def results(chartNumber):
     """Saves results to text file. Redirects back to index."""
 
     column = request.form.get('column')
@@ -44,7 +54,9 @@ def results():
     with open('results.csv','a+') as file:
         file.write('{0},{1}\n'.format(column, columnSize))
 
-    return redirect(url_for('index'))
+    chartNumber = chartNumber + 1
+
+    return redirect(url_for('chart', chartNumber=chartNumber))
     
 
     

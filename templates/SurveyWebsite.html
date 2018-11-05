@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<script src="{{ url_for('static', filename='d3/d3.v4.js') }}" charset="utf-8"></script>
-	<title>Assignment 1</title>
+	<title>Chart 1</title>
 	<style type="text/css">
 
 	#wrapper {
@@ -27,7 +27,7 @@
 			var chartWidth = svgWidth - margin.left - margin.right;
 			var chartHeight = svgHeight - margin.top - margin.bottom;
 
-			chart3 = d3.select("figure")
+			chart = d3.select("figure")
 				.append("svg")
 				.attr("width", svgWidth)
 				.attr("height", svgHeight)
@@ -56,18 +56,18 @@
 								.ticks();
 							  
 				// Call the x-axis
-				chart3.append("g")
+				chart.append("g")
 					.attr("class", "axis") // For styling.
 					.attr("transform", "translate(0," + chartHeight + ")")
 					.call(xAxis);
 					
 				// Call the y axis
-				chart3.append("g")
+				chart.append("g")
 					.attr("class", "axis")
 					.call(yAxis);
 							
 				// Add rectangles
-				chart3.selectAll("rect")
+				chart.selectAll("rect")
 				   .data(dataset)
 				   .enter()
 					   .append("rect")
@@ -78,19 +78,69 @@
 					   .attr("fill", "Green");
 			}
 
+			function generateBarChart(){
+
+			    var xScale = d3.scaleBand()
+			          			.domain(dataset.map(function(d) { return d.Name; }))
+								.range([0, chartWidth])
+								.paddingInner(0.2)
+
+				var yScale = d3.scaleLinear()
+			                     .domain([0, d3.max(dataset, function(d){ return +d.Value; }) ])
+			                     .range([chartHeight, 0]);
+				
+				// Create an x-axis connected to the x scale
+				var xAxis = d3.axisBottom()
+								.scale(xScale)
+								.ticks(7);
+
+				//Define Y axis
+				var yAxis = d3.axisLeft()
+								.scale(yScale)
+								.ticks();
+							  
+				// Call the x-axis
+				chart.append("g")
+					.attr("class", "axis") // For styling.
+					.attr("transform", "translate(0," + chartHeight + ")")
+					.call(xAxis);
+					
+				// Call the y axis
+				chart.append("g")
+					.attr("class", "axis")
+					.call(yAxis);
+							
+				// Add rectangles
+				chart.selectAll("rect")
+				   .data(dataset)
+				   .enter()
+					   .append("rect")
+					   .attr("x", function(d) { return xScale(d.Name); })
+					   .attr("y" , function(d) { return yScale(+d.Value); }) 
+					   .attr("width", xScale.bandwidth())
+					   .attr("height", function(d) {return chartHeight - yScale(+d.Value); }) 
+					   .attr("fill", "Green");
+			}
+
 			// Load the file data.csv and generate a visualisation based on it
-			d3.json("/chart/1", function(data) {
+			d3.json("/data/{{ chartNumber }}", function(data) {
+
+				chartType = data["type"];
 				dataset = data["data"];
 
 				console.log(dataset);
-
-				generateColumnChart();
+				
+				if (chartType == "bar") {
+					generateBarChart();
+				} else if (chartType == "col") {
+					generateColumnChart()
+				}				
 			});
 
 			</script>
 		</figure>
 		<aside>
-			 <form action="{{ url_for('results') }}" method="post">
+			 <form action="{{ url_for('results', chartNumber=chartNumber) }}" method="post">
 			 	<p>Which is the 3rd tallest column?</p>
 			 	1 <input type="radio" value="1" name="column" /><br>
 				2 <input type="radio" value="2" name="column" /><br>
