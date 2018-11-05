@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset="utf-8">
+	<title>Assignment 1</title>
+	<style type="text/css">
+
+	#wrapper {
+		display: flex; 
+		flex-direction: row;
+		width: 100%;
+	}
+
+	</style>
+</head>
+<body>
+	<div id="wrapper">
+		<figure>
+			<img src="static/bar-chart.png">
+		</figure>
+		<aside>
+			 <form action="{{ url_for('results') }}" method="post">
+			 	<p>Which is the 3rd tallest column?</p>
+			 	1 <input type="radio" value="1" name="column" /><br>
+				2 <input type="radio" value="2" name="column" /><br>
+				3 <input type="radio" value="3" name="column" /><br>
+				4 <input type="radio" value="4" name="column" /><br>
+				5 <input type="radio" value="5" name="column" /><br>
+				Height of that column: <input type="text" name="columnSize"><br><br>			
+				<input type="submit" value="Next">
+			</form> 
+		</aside>
+	</div>
+</body>
+</html>
