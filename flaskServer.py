@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import json
+import time
 
 app = Flask(__name__)
 
@@ -20,6 +21,8 @@ chartJson = {1: {"type": "bar", "data": [
             ]},
             }
 
+# Start time (global)
+start = time.time() 
 
 @app.route('/')
 def index():
@@ -45,14 +48,18 @@ def data(chartNumber):
 @app.route('/results/<int:chartNumber>', methods=['POST'])
 def results(chartNumber):
     """Saves results to text file. Redirects back to index."""
+    global start
+
+    duration = time.time() - start
+    start = time.time()
 
     column = request.form.get('column')
     columnSize = request.form.get('columnSize')
 
-    print('Response Received. Column: {0}, Size: {1}'.format(column, columnSize))
+    print('Response Received. Column: {0}, Size: {1}, Duration: {2}'.format(column, columnSize, duration))
 
     with open('results.csv','a+') as file:
-        file.write('{0},{1}\n'.format(column, columnSize))
+        file.write('{0},{1},{2}\n'.format(column, columnSize, duration))
 
     chartNumber = chartNumber + 1
 
