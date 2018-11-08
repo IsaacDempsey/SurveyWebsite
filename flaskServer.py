@@ -6,14 +6,14 @@ import time
 app = Flask(__name__)
 
 
-chartJson = {1: {"type": "bar", "data": [
+chartJson = {1: {"type": "col", "data": [
             {"Name": "A", "Value": 5},
             {"Name": "B", "Value": 16},
             {"Name": "C", "Value": 18},
             {"Name": "D", "Value": 14},
             {"Name": "E", "Value": 11}
             ]},
-            2: {"type": "col", "data": [
+            2: {"type": "bar", "data": [
             {"Name": "A", "Value": 32},
             {"Name": "B", "Value": 23},
             {"Name": "C", "Value": 15},
@@ -63,10 +63,11 @@ def results(chartNumber):
     column = request.form.get('column')
     columnSize = request.form.get('columnSize')
 
-    print('Response Received. Column: {0}, Size: {1}, Duration: {2}'.format(column, columnSize, duration))
+    print('Response Received. Chart: {0}, Column: {1}, Size: {2}, Duration: {3}'
+    	.format(chartNumber, column, columnSize, duration))
 
     with open('results.csv','a+') as file:
-        file.write('{0},{1},{2}\n'.format(column, columnSize, duration))
+        file.write('{0},{1},{2},{3}\n'.format(chartNumber, column, columnSize, duration))
 
     # Redirect to finish page after all charts completed.
     if c.index(chartNumber) >= (len(c) - 1):

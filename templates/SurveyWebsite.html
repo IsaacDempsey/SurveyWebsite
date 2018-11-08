@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<script src="{{ url_for('static', filename='d3/d3.v4.js') }}" charset="utf-8"></script>
-	<title>Chart 1</title>
+	<title>Chart {{ chartNumber }}</title>
 	<style type="text/css">
 
 	#wrapper {
@@ -34,7 +34,7 @@
 				.append("g")
 					.attr("transform", "translate("+margin.left+", "+margin.top+")");
 
-			function generateColumnChart(){
+			function generateBarChart(){
 				
 				var xScale = d3.scaleLinear()
 			                     .domain([0, d3.max(dataset, function(d){ return +d.Value; }) ])
@@ -78,7 +78,7 @@
 					   .attr("fill", "Green");
 			}
 
-			function generateBarChart(){
+			function generateColumnChart(){
 
 			    var xScale = d3.scaleBand()
 			          			.domain(dataset.map(function(d) { return d.Name; }))
@@ -142,11 +142,11 @@
 		<aside>
 			 <form action="{{ url_for('results', chartNumber=chartNumber) }}" method="post">
 			 	<p>Which is the 3rd tallest column?</p>
-			 	1 <input type="radio" value="1" name="column" /><br>
-				2 <input type="radio" value="2" name="column" /><br>
-				3 <input type="radio" value="3" name="column" /><br>
-				4 <input type="radio" value="4" name="column" /><br>
-				5 <input type="radio" value="5" name="column" /><br>
+			 	A <input type="radio" value="1" name="column" /><br>
+				B <input type="radio" value="2" name="column" /><br>
+				C <input type="radio" value="3" name="column" /><br>
+				D <input type="radio" value="4" name="column" /><br>
+				E <input type="radio" value="5" name="column" /><br>
 				Height of that column: <input type="text" name="columnSize"><br><br>			
 				<input type="submit" value="Next">
 			</form> 
