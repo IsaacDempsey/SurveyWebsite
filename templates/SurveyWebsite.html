@@ -140,14 +140,13 @@
 			</script>
 		</figure>
 		<aside>
-			 <form action="{{ url_for('results', chartNumber=chartNumber) }}" method="post">
-			 	<p>Which is the 3rd tallest column?</p>
-			 	A <input type="radio" value="1" name="column" /><br>
-				B <input type="radio" value="2" name="column" /><br>
-				C <input type="radio" value="3" name="column" /><br>
-				D <input type="radio" value="4" name="column" /><br>
-				E <input type="radio" value="5" name="column" /><br>
-				Height of that column: <input type="text" name="columnSize"><br><br>			
+			<form action="{{ url_for('results', chartNumber=chartNumber) }}" method="post">
+				<p>Which is the 3rd largest</p>
+				{% for data_point in range(data_points) %}
+				{{ letters[data_point] }}<input type="radio" value="{{ data_point }}" name="column" /><br>
+				{% endfor %}
+				<br />
+				Estimate its size: <input type="text" name="columnSize"><br><br>			
 				<input type="submit" value="Next">
 			</form> 
 		</aside>

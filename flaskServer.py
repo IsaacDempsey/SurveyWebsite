@@ -2,9 +2,11 @@ from flask import Flask, render_template, request, redirect, url_for
 import json
 from random import shuffle
 import time
+import string
 
-# chartDict.py holds the dictionary containing generated chart values
+# chartDict.py holds the dictionary containing the generated chart values
 from chartDict import chartDict
+
 
 app = Flask(__name__)
 
@@ -26,9 +28,15 @@ def index():
 
 @app.route('/chart/<int:chartNumber>')
 def chart(chartNumber):
-    """Renders page containing chart of number specified.""" 
+	"""Renders page containing chart of number specified.""" 
 
-    return render_template('SurveyWebsite.html', chartNumber=chartNumber)
+	# Letters of alphabet
+	letters = list(string.ascii_uppercase)
+
+	# Number of columns/bars in chart
+	data_points = len(chartDict[chartNumber]['data'])
+
+	return render_template('SurveyWebsite.html', chartNumber=chartNumber, data_points=data_points, letters=letters)
 
 
 @app.route('/data/<int:chartNumber>')

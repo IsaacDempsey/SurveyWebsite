@@ -3,9 +3,10 @@ from pprint import pprint
 from random import randint
 import string
 
-chartDict = {}
-
+# Letters of alphabet
 letters = list(string.ascii_uppercase)
+
+chartDict = {}
 
 for i in range(1, 25):
 	if i % 2 == 0:
