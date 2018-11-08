@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset="utf-8">
+	<script src="{{ url_for('static', filename='d3/d3.v4.js') }}" charset="utf-8"></script>
+	<title>Chart 1</title>
+	<style type="text/css">
+
+	body {
+		background: gold;
+	}
+
+	#wrapper {
+		display: flex; 
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 90vh;
+	}
+
+	#row {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+	}
+
+	h1 {
+		font-size: 60px;
+	}
+
+	</style>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="row">
+			<h1>Congratulations!</h1>
+			<h3>All done :)</h3>
+			<p></p>
+			<button onclick="buttonClick()">Restart Test</button>
+		</div>
+		<script>
+			function buttonClick() {
+				location.href = "{{ url_for('index') }}"
+			}
+		</script>
+	</div>
+</body>
+</html>

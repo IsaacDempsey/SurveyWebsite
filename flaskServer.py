@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import json
+from random import shuffle
 import time
 
 app = Flask(__name__)
@@ -24,11 +25,17 @@ chartJson = {1: {"type": "bar", "data": [
 # Start time (global)
 start = time.time() 
 
+# List of chart order. Default: [1, 2, ..., 24]
+c = [i for i in range(1, 3)]
+
+
 @app.route('/')
 def index():
     """Renders index template."""  
+   
+    shuffle(c) # Randomise chart order
 
-    return redirect('/chart/1')
+    return redirect('/chart/'+str(c[0]))
 
 
 @app.route('/chart/<int:chartNumber>')
@@ -47,7 +54,7 @@ def data(chartNumber):
 
 @app.route('/results/<int:chartNumber>', methods=['POST'])
 def results(chartNumber):
-    """Saves results to text file. Redirects back to index."""
+    """Saves results to text file. Redirects back to the next chart in list."""
     global start
 
     duration = time.time() - start
@@ -61,12 +68,23 @@ def results(chartNumber):
     with open('results.csv','a+') as file:
         file.write('{0},{1},{2}\n'.format(column, columnSize, duration))
 
-    chartNumber = chartNumber + 1
+    # Redirect to finish page after all charts completed.
+    if c.index(chartNumber) >= (len(c) - 1):
+    	return redirect(url_for('finish'))
+
+    # Index of next chart number = (index of current element in list) + 1
+    chartNumber = c[c.index(chartNumber) + 1]
 
     return redirect(url_for('chart', chartNumber=chartNumber))
-    
 
-    
+
+@app.route('/finish')
+def finish():
+	"""Finish page. Contains button that sends you back to index."""
+
+	return render_template('finish.html')
+	
+  
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)
