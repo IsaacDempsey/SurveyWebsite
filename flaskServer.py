@@ -3,30 +3,16 @@ import json
 from random import shuffle
 import time
 
+# chartDict.py holds the dictionary containing generated chart values
+from chartDict import chartDict
+
 app = Flask(__name__)
-
-
-chartJson = {1: {"type": "col", "data": [
-            {"Name": "A", "Value": 5},
-            {"Name": "B", "Value": 16},
-            {"Name": "C", "Value": 18},
-            {"Name": "D", "Value": 14},
-            {"Name": "E", "Value": 11}
-            ]},
-            2: {"type": "bar", "data": [
-            {"Name": "A", "Value": 32},
-            {"Name": "B", "Value": 23},
-            {"Name": "C", "Value": 15},
-            {"Name": "D", "Value": 10},
-            {"Name": "E", "Value": 12}
-            ]},
-            }
 
 # Start time (global)
 start = time.time() 
 
 # List of chart order. Default: [1, 2, ..., 24]
-c = [i for i in range(1, 3)]
+c = [i for i in range(1, 25)]
 
 
 @app.route('/')
@@ -49,7 +35,7 @@ def chart(chartNumber):
 def data(chartNumber):
     """Returns JSON data of chart number specified."""
 
-    return json.dumps(chartJson[chartNumber])
+    return json.dumps(chartDict[chartNumber])
 
 
 @app.route('/results/<int:chartNumber>', methods=['POST'])
