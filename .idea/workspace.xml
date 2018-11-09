@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="feb79805-e54f-4acb-a2fc-23b95209a02a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/flaskServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskServer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/SurveyWebsite.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/SurveyWebsite.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/finish.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/finish.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,8 +26,8 @@
       <file leaf-file-name="SurveyWebsite.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/SurveyWebsite.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="115" column="32" selection-start-line="115" selection-start-column="32" selection-end-line="115" selection-end-column="49" />
+            <state relative-caret-position="535">
+              <caret line="92" column="33" selection-start-line="92" selection-start-column="33" selection-end-line="92" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -242,8 +240,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/SurveyWebsite.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="115" column="32" selection-start-line="115" selection-start-column="32" selection-end-line="115" selection-end-column="49" />
+        <state relative-caret-position="535">
+          <caret line="92" column="33" selection-start-line="92" selection-start-column="33" selection-end-line="92" selection-end-column="33" />
         </state>
       </provider>
     </entry>
