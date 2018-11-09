@@ -23,7 +23,7 @@ def index():
 
     shuffle(c)  # Randomise chart order
 
-    return redirect('/chart/'+str(c[0]))
+    return redirect('/chart/0')
 
 
 @app.route('/chart/<int:chartNumber>')
@@ -36,7 +36,12 @@ def chart(chartNumber):
     # Number of columns/bars in chart
     data_points = len(chartDict[chartNumber]['data'])
 
-    return render_template('SurveyWebsite.html', chartNumber=chartNumber, data_points=data_points, letters=letters)
+    # Random number for questions
+    q1 = chartDict[chartNumber]['q1']
+    q2 = chartDict[chartNumber]['q2']
+
+    return render_template('SurveyWebsite.html', chartNumber=chartNumber, data_points=data_points, letters=letters,
+                           q1=q1, q2=q2)
 
 
 @app.route('/data/<int:chartNumber>')
@@ -63,12 +68,15 @@ def results(chartNumber):
     with open('results.csv','a+') as file:
         file.write('{0},{1},{2},{3}\n'.format(chartNumber, column, columnSize, duration))
 
-    # Redirect to finish page after all charts completed.
-    if c.index(chartNumber) >= (len(c) - 1):
-        return redirect(url_for('finish'))
+    if chartNumber == 0:
+        chartNumber = c[c.index(1)]
+    else:
+        # Redirect to finish page after all charts completed.
+        if c.index(chartNumber) >= (len(c) - 1):
+            return redirect(url_for('finish'))
 
-    # Index of next chart number = (index of current element in list) + 1
-    chartNumber = c[c.index(chartNumber) + 1]
+        # Index of next chart number = (index of current element in list) + 1
+        chartNumber = c[c.index(chartNumber) + 1]
 
     return redirect(url_for('chart', chartNumber=chartNumber))
 

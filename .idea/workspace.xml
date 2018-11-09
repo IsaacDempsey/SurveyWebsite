@@ -2,6 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="feb79805-e54f-4acb-a2fc-23b95209a02a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chartDict.py" beforeDir="false" afterPath="$PROJECT_DIR$/chartDict.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chartDictGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/chartDictGenerator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskServer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/SurveyWebsite.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/SurveyWebsite.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,11 +18,53 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SurveyWebsite.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SurveyWebsite.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/SurveyWebsite.html">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="167">
+              <caret line="174" column="42" lean-forward="true" selection-start-line="174" selection-start-column="42" selection-end-line="174" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="flaskServer.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flaskServer.py">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="215">
-              <caret line="180" column="115" selection-start-line="180" selection-start-column="115" selection-end-line="180" selection-end-column="115" />
+              <caret line="40" column="37" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#68#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chartDict.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chartDict.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="195" column="14" lean-forward="true" selection-start-line="195" selection-start-column="14" selection-end-line="195" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chartDictGenerator.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/chartDictGenerator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="262">
+              <caret line="19" column="14" lean-forward="true" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="results.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/results.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -37,10 +84,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/templates/finish.html" />
-        <option value="$PROJECT_DIR$/chartDictGenerator.py" />
-        <option value="$PROJECT_DIR$/flaskServer.py" />
         <option value="$PROJECT_DIR$/results.csv" />
         <option value="$PROJECT_DIR$/templates/SurveyWebsite.html" />
+        <option value="$PROJECT_DIR$/chartDictGenerator.py" />
+        <option value="$PROJECT_DIR$/chartDict.py" />
+        <option value="$PROJECT_DIR$/flaskServer.py" />
       </list>
     </option>
   </component>
@@ -140,8 +188,8 @@
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.32892805" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16843827" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.26725402" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16843827" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="right" id="Database" />
       <window_info anchor="right" id="SciView" />
@@ -164,37 +212,10 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/chartDict.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="103" selection-start-column="103" selection-end-column="103" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flaskServer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
-          <folding>
-            <element signature="e#0#68#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/finish.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
           <caret line="38" column="44" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chartDictGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="17" lean-forward="true" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -207,8 +228,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/SurveyWebsite.html">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="174" column="42" lean-forward="true" selection-start-line="174" selection-start-column="42" selection-end-line="174" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chartDict.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="195" column="14" lean-forward="true" selection-start-line="195" selection-start-column="14" selection-end-line="195" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flaskServer.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="215">
-          <caret line="180" column="115" selection-start-line="180" selection-start-column="115" selection-end-line="180" selection-end-column="115" />
+          <caret line="40" column="37" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#68#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chartDictGenerator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="19" column="14" lean-forward="true" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
