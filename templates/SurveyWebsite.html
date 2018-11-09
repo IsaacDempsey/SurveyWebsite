@@ -5,6 +5,18 @@
 	<script src="{{ url_for('static', filename='d3/d3.v4.js') }}" charset="utf-8"></script>
 	<title>Chart {{ chartNumber }}</title>
 	<style type="text/css">
+        .axis path,
+        .axis.line {
+            fill: none;
+            stroke: black;
+            shape-rendering: crispEdges;
+        }
+
+        .axis text {
+            font-family: sans-serif;
+            font-size: 14px;
+        }
+
 
 	#wrapper {
 		display: flex; 
@@ -23,7 +35,7 @@
 			var svgWidth = 800;
 			var svgHeight = 500;
 				
-			var margin = {top: 20, right: 50, bottom: 30, left: 100};
+			var margin = {top: 30, right: 50, bottom: 30, left: 100};
 			var chartWidth = svgWidth - margin.left - margin.right;
 			var chartHeight = svgHeight - margin.top - margin.bottom;
 
@@ -37,24 +49,26 @@
 			function generateBarChart(){
 				
 				var xScale = d3.scaleLinear()
-			                     .domain([0, d3.max(dataset, function(d){ return +d.Value; }) ])
+			                     .domain([0, d3.max(dataset, function(d){ return +d.Value; })])
 			                     .range([0, chartWidth]);
 
 			    var yScale = d3.scaleBand()
 			          			.domain(dataset.map(function(d) { return d.Name; }))
 								.range([0, chartHeight])
-								.paddingInner(0.2)	
+								.paddingInner(0.4)
 				
 				// Create an x-axis connected to the x scale
 				var xAxis = d3.axisBottom()
 								.scale(xScale)
-								.ticks(7);
+                                .ticks(5)
+                                .tickSize(- chartWidth, 0)
+                                .tickSizeOuter(0);
 
 				//Define Y axis
 				var yAxis = d3.axisLeft()
 								.scale(yScale)
 								.ticks();
-							  
+
 				// Call the x-axis
 				chart.append("g")
 					.attr("class", "axis") // For styling.
@@ -71,33 +85,35 @@
 				   .data(dataset)
 				   .enter()
 					   .append("rect")
-					   .attr("x", 0)
+					   .attr("x", 1)
 					   .attr("y", function(d) { return yScale(d.Name); })
 					   .attr("width", function(d) { return xScale(+d.Value); })
 					   .attr("height", yScale.bandwidth() ) // returns width (in this case height) of each band.
-					   .attr("fill", "Green");
+					   .attr("fill", "#ffdab3");
 			}
 
 			function generateColumnChart(){
 
 			    var xScale = d3.scaleBand()
 			          			.domain(dataset.map(function(d) { return d.Name; }))
-								.range([0, chartWidth])
-								.paddingInner(0.2)
+								.range([0.5, chartWidth])
+								.paddingInner(0.4)
 
 				var yScale = d3.scaleLinear()
-			                     .domain([0, d3.max(dataset, function(d){ return +d.Value; }) ])
+			                     .domain([0, d3.max(dataset, function(d){ return +d.Value; })])
 			                     .range([chartHeight, 0]);
 				
 				// Create an x-axis connected to the x scale
 				var xAxis = d3.axisBottom()
 								.scale(xScale)
-								.ticks(7);
+								.ticks();
 
 				//Define Y axis
 				var yAxis = d3.axisLeft()
 								.scale(yScale)
-								.ticks();
+                                .ticks(5)
+                                .tickSize(- chartWidth, 0)
+                                .tickSizeOuter(0);
 							  
 				// Call the x-axis
 				chart.append("g")
@@ -116,10 +132,10 @@
 				   .enter()
 					   .append("rect")
 					   .attr("x", function(d) { return xScale(d.Name); })
-					   .attr("y" , function(d) { return yScale(+d.Value); }) 
+					   .attr("y" , function(d) { return yScale(+d.Value); })
 					   .attr("width", xScale.bandwidth())
-					   .attr("height", function(d) {return chartHeight - yScale(+d.Value); }) 
-					   .attr("fill", "Green");
+					   .attr("height", function(d) {return chartHeight - yScale(+d.Value); })
+					   .attr("fill", " #ffdab3");
 			}
 
 			// Load the file data.csv and generate a visualisation based on it
