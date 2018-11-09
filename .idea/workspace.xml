@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="feb79805-e54f-4acb-a2fc-23b95209a02a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/results.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/SurveyWebsite.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/SurveyWebsite.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +16,8 @@
       <file leaf-file-name="SurveyWebsite.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/SurveyWebsite.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="175" column="18" lean-forward="true" selection-start-line="175" selection-start-column="18" selection-end-line="175" selection-end-column="18" />
+            <state relative-caret-position="215">
+              <caret line="180" column="115" selection-start-line="180" selection-start-column="115" selection-end-line="180" selection-end-column="115" />
             </state>
           </provider>
         </entry>
@@ -52,9 +51,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="167" />
+    <option name="x" value="52" />
     <option name="y" value="22" />
-    <option name="width" value="1108" />
+    <option name="width" value="1223" />
     <option name="height" value="778" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -132,7 +131,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="167" y="22" width="1108" height="778" extended-state="0" />
+    <frame x="52" y="22" width="1223" height="778" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -141,8 +140,8 @@
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32892805" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18592058" />
+      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.32892805" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16843827" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="right" id="Database" />
       <window_info anchor="right" id="SciView" />
@@ -208,8 +207,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/SurveyWebsite.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="175" column="18" lean-forward="true" selection-start-line="175" selection-start-column="18" selection-end-line="175" selection-end-column="18" />
+        <state relative-caret-position="215">
+          <caret line="180" column="115" selection-start-line="180" selection-start-column="115" selection-end-line="180" selection-end-column="115" />
         </state>
       </provider>
     </entry>

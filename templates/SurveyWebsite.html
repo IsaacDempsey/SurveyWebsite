@@ -175,10 +175,10 @@
                 <legend>Questions</legend>
 				<p>Which bar is the 3rd largest?</p>
 				{% for data_point in range(data_points) %}
-				{{ letters[data_point] }}<input type="radio" value="{{ data_point }}\t" name="column" /><br>
+				{{ letters[data_point] }}<input type="radio" value="{{ data_point }}" name="column" required/><br>
 				{% endfor %}
 				<br />
-				Estimate its size: <input type="text" name="columnSize"><br><br>
+				Estimate its size: <input  type="number" step="1" max=100 min=0 name="columnSize" required><br><br>
 				<input type="submit" value="Next">
             </fieldset>
 			</form> 
