@@ -147,7 +147,7 @@
 					.call(xAxis);
 			}
 
-			// Load the file data.csv and generate a visualisation based on it
+			// Load the chartDict and generate a visualisation based on it
 			d3.json("/data/{{ chartNumber }}", function(data) {
 
 				chartType = data["type"];

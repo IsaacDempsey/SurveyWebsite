@@ -24,7 +24,7 @@ for i in range(1, 25):
 
 	if i > 16 and i <= 24:
 		data = [{"Name": letters[i], "Value": randint(1,101)} for i in range(8)]
-		chartDict[i] = {"type": chartType, "data": data}	
+		chartDict[i] = {"type": chartType, "data": data}
 
 
 with open('chartDict.py','w') as file:
