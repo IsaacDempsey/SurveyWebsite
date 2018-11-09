@@ -3,6 +3,7 @@ import json
 from random import shuffle
 import time
 import string
+import inflect
 
 # chartDict.py holds the dictionary containing the generated chart values
 from chartDict import chartDict
@@ -12,6 +13,9 @@ app = Flask(__name__)
 
 # Start time (global)
 start = time.time()
+
+# Inflect pack has method for converting numerals into ordinals. E.g. 1 => 1st, 2 => 2nd, ...
+p = inflect.engine()
 
 # List of chart order. Default: [1, 2, ..., 24]
 c = [i for i in range(1, 25)]
@@ -37,7 +41,7 @@ def chart(chartNumber):
     data_points = len(chartDict[chartNumber]['data'])
 
     # Random number for questions
-    q1 = chartDict[chartNumber]['q1']
+    q1 = p.ordinal(chartDict[chartNumber]['q1'])
     q2 = chartDict[chartNumber]['q2']
 
     return render_template('SurveyWebsite.html', chartNumber=chartNumber, data_points=data_points, letters=letters,
