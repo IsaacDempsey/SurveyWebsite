@@ -1,5 +1,12 @@
-# OS generated files #
-######################
+# Folders
+##########
 
 __pycache__/
+venv/
+.idea/
+
+
+# Files
+########
+
 ._*
