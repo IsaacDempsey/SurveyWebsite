@@ -3,6 +3,7 @@ import json
 from random import shuffle
 import time
 import string
+from operator import itemgetter
 
 # chartDict.py holds the dictionary containing the generated chart values
 from chartDict import chartDict
@@ -15,6 +16,9 @@ start = time.time()
 
 # List of chart order. Default: [1, 2, ..., 24]
 c = [i for i in range(1, 25)]
+
+# Letters of alphabet
+letters = list(string.ascii_uppercase)
 
 
 @app.route('/')
@@ -29,9 +33,6 @@ def index():
 @app.route('/chart/<int:chartNumber>')
 def chart(chartNumber):
     """Renders page containing chart of number specified."""
-
-    # Letters of alphabet
-    letters = list(string.ascii_uppercase)
 
     # Number of columns/bars in chart
     data_points = len(chartDict[chartNumber]['data'])
@@ -62,12 +63,22 @@ def results(chartNumber):
     column = request.form.get('column')
     columnSize = request.form.get('columnSize')
 
-    print('Response Received. Chart: {0}, Column: {1}, Size: {2}, Duration: {3}'
-          .format(chartNumber, column, columnSize, duration))
+    # Sort data points of current chart by value in descending order
+    data_points_sorted = sorted(chartDict[chartNumber]['data'], key=itemgetter('Value'), reverse=True)
+
+    # Get index of column at q1 position, e.g. column with 2. highest value
+    correct_column = letters.index(data_points_sorted[chartDict[chartNumber]['q1']-1]['Name'])
+
+    # Get size of column q2
+    correct_columnSize = chartDict[chartNumber]['data'][chartDict[chartNumber]['q2']-1]['Value']
+
+    # print('Response Received. Chart: {0}, Column: {1}, Size: {2}, Duration: {3}, Correct column: {4}, '
+    #       'Correct column size: {5}'
+    #       .format(chartNumber, column, columnSize, duration, correct_column, correct_columnSize))
 
     with open('results.csv','a+') as file:
-        file.write('{0},{1},{2},{3}\n'.format(chartNumber, column, columnSize, duration))
-
+        file.write('{0},{1},{2},{3},{4},{5}\n'.format(chartNumber, column, columnSize, duration,
+                                                  correct_column, correct_columnSize))
     if chartNumber == 0:
         chartNumber = c[c.index(1)]
     else:
