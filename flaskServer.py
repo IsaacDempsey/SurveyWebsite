@@ -85,7 +85,7 @@ def results(chartNumber):
         file.write('{0},{1},{2},{3},{4},{5}\n'.format(chartNumber, column, columnSize, duration,
                                                   correct_column, correct_columnSize))
     if chartNumber == 0:
-        chartNumber = c[c.index(1)]
+        chartNumber = c[0]
     else:
         # Redirect to finish page after all charts completed.
         if c.index(chartNumber) >= (len(c) - 1):
