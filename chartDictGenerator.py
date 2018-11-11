@@ -25,14 +25,14 @@ for i in range(1, 25, 2):
         chartDict[i+1] = {"type": "bar", "q1": q1, "q2": q2, "data": data}
 
     if i > 8 and i <= 16:
-        q1 = randint(1, 5)
+        q1 = randint(1, 3)
         q2 = randint(1, 5)
         data = [{"Name": letters[i], "Value": randint(1,100)} for i in range(5)]
         chartDict[i] = {"type": "col", "q1": q1, "q2": q2, "data": data}
         chartDict[i + 1] = {"type": "bar", "q1": q1, "q2": q2, "data": data}
 
     if i > 16 and i <= 24:
-        q1 = randint(1, 8)
+        q1 = randint(1, 3)
         q2 = randint(1, 8)
         data = [{"Name": letters[i], "Value": randint(1,100)} for i in range(8)]
         chartDict[i] = {"type": "col", "q1": q1, "q2": q2, "data": data}
