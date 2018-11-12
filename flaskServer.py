@@ -81,7 +81,7 @@ def results(chartNumber):
     #       'Correct column size: {5}'
     #       .format(chartNumber, column, columnSize, duration, correct_column, correct_columnSize))
 
-    with open('results.csv','a+') as file:
+    with open('results5.csv','a+') as file:
         file.write('{0},{1},{2},{3},{4},{5}\n'.format(chartNumber, column, columnSize, duration,
                                                   correct_column, correct_columnSize))
     if chartNumber == 0:
