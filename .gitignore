@@ -4,6 +4,7 @@
 __pycache__/
 venv/
 .idea/
+.ipynb_checkpoints/
 
 
 # Files
@@ -11,3 +12,4 @@ venv/
 
 ._*
 results.csv
+workspace.xml
